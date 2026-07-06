@@ -1,13 +1,13 @@
 # Docker Compose configuration for LangBot
 # For Kubernetes deployment, see kubernetes.yaml and the deployment guide at https://docs.langbot.app
-version: "3"
 
 services:
 
   langbot_plugin_runtime:
-#    image: rockchin/langbot:latest
-#    本地构建
     image: langbot:local
+    build:
+      context: ..
+      dockerfile: Dockerfile
     container_name: langbot_plugin_runtime
     volumes:
       - ./data/plugins:/app/data/plugins
@@ -28,6 +28,9 @@ services:
   # ``BOX__ENABLED=false`` in the langbot service env below) to match.
   langbot_box:
     image: langbot:local
+    build:
+      context: ..
+      dockerfile: Dockerfile
     container_name: langbot_box
     profiles: ["box", "all"]
     volumes:
@@ -56,6 +59,9 @@ services:
 
   langbot:
     image: langbot:local
+    build:
+      context: ..
+      dockerfile: Dockerfile
     container_name: langbot
     volumes:
       - ./data:/app/data
