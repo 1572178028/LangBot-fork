@@ -4,7 +4,7 @@
 services:
 
   langbot_plugin_runtime:
-    image: langbot:local
+#    image: langbot:local
     build:
       context: ..
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
   # set ``box.enabled: false`` in ``data/config.yaml`` (or
   # ``BOX__ENABLED=false`` in the langbot service env below) to match.
   langbot_box:
-    image: langbot:local
+#    image: langbot:local
     build:
       context: ..
       dockerfile: Dockerfile
@@ -58,7 +58,7 @@ services:
       - langbot_network
 
   langbot:
-    image: langbot:local
+#    image: langbot:local
     build:
       context: ..
       dockerfile: Dockerfile
